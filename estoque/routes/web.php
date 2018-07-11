@@ -29,9 +29,14 @@ Route::get('/produtos/altera/{id}', 'ProdutoController@altera');
 
 Route::post('/produtos/update/{id}', 'ProdutoController@update');
 
-Route::get('home', 'HomeController@index');
-
-Route::controllers([
+Route::resources([
     'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
+    'password' => 'Auth\PasswordController'
 ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('auth/login', 'LoginController@login');

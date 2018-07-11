@@ -7,6 +7,11 @@ use Request;
 
 class ProdutoController extends Controller {
 
+    public function __construct(){
+       $this->middleware('nosso-middleware', 
+          ['only' => ['adiciona', 'remove']]);
+    }
+    
     public function lista(){
         $produtos = Produto::all();
         return view('produto.listagem')->with('produtos', $produtos);
